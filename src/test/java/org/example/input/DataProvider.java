@@ -1,26 +1,18 @@
 package org.example.input;
 
+import predicate.Conditions;
+
 import java.util.Arrays;
 import java.util.Iterator;
 
 public class DataProvider {
     @org.testng.annotations.DataProvider(name = "conditions")
-    public Iterator<Object[]> conditionsType() {
+    public Object[][] conditionsType() {
 
-//        Object[] objects={
-//                "CONTAINS_G", "STARTS_WITH_I", "NO_TEXT" };
-           Iterator<Object[]> it=new Iterator<Object[]>() {
-               @Override
-               public boolean hasNext() {
-                   return false;
-               }
+        Object[][] objects=new Object[][]{
+                {Conditions.CONTAINS_G}, {Conditions.NO_TEXT}, {Conditions.STARTS_WITH_I} };
 
-               @Override
-               public Object[] next() {
-                   return new Object[0];
-               }
-           }{"CONTAINS_G", "STARTS_WITH_I", "NO_TEXT"}
         return objects;
         }
     }
-}
+

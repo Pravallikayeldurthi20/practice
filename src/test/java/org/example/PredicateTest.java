@@ -1,13 +1,14 @@
 package org.example;
 
 import driver.DriverManagement;
+import org.example.input.DataProvider;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import predicate.Conditions;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -21,12 +22,12 @@ public class PredicateTest {
         driver.get("https://www.google.com/");
         Thread.sleep(500);
     }
-   @Test
-   @DataProvider(name = "co")
-   public void applyConditions()
+   @Test(dataProvider = "conditions", dataProviderClass= DataProvider.class)
+   public void applyConditions(Predicate<WebElement> element)
    {
        List<WebElement> links=driver.findElements(By.tagName("a"));
-       links.stream().filter().forEach(s-> System.out.println(s));
+       links.stream().filter(element).forEach(s-> System.out.println(s.getText()));
+
    }
     @Test
     public void noText()

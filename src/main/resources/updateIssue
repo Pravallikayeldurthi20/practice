@@ -1,0 +1,16 @@
+{
+  "update": {
+    "description": [
+      {
+        "set": "Update issue"
+      }
+    ],
+    "comment": [
+      {
+        "add": {
+          "body": "This request was originally written to add comment"
+        }
+      }
+    ]
+  }
+}
