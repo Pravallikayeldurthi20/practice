@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -20,22 +21,13 @@ public class PredicateTest {
         driver.get("https://www.google.com/");
         Thread.sleep(500);
     }
-    @Test
-    public void containsG()
-    {
-        Predicate<WebElement> CONTAINS_G= s->s.getText().contains("g")||s.getText().contains("G");
-        List<WebElement> links=driver.findElements(By.tagName("a"));
-        links.stream().filter(CONTAINS_G).forEach(s-> System.out.println(s.getText()));
-
-    }
-    @Test
-    public void startsWithI()
-    {
-        Predicate<WebElement> STARTS_WITH_I= s->s.getText().startsWith("i")||s.getText().startsWith("I");
-        List<WebElement> links=driver.findElements(By.tagName("a"));
-        links.stream().filter(STARTS_WITH_I).forEach(s-> System.out.println(s.getText()));
-
-    }
+   @Test
+   @DataProvider(name = "co")
+   public void applyConditions()
+   {
+       List<WebElement> links=driver.findElements(By.tagName("a"));
+       links.stream().filter().forEach(s-> System.out.println(s));
+   }
     @Test
     public void noText()
     {
