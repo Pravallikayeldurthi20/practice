@@ -29,14 +29,7 @@ public class PredicateTest {
        links.stream().filter(element).forEach(s-> System.out.println(s.getText()));
 
    }
-    @Test
-    public void noText()
-    {
-        Predicate<WebElement> NO_TEXT= s->s.getText().isBlank();
-        List<WebElement> links=driver.findElements(By.tagName("a"));
-        links.stream().filter(NO_TEXT).forEach(s-> System.out.println(s));
 
-    }
     @AfterClass
     public void closeDriver()
     {

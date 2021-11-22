@@ -13,20 +13,24 @@ import java.util.HashMap;
 import static io.restassured.RestAssured.given;
 
 public class JiraIssueTest {
-    @Test
-    public String authentication() throws IOException {
-        HashMap map=new HashMap();
-        map.put("username","pravallikayeldurthi20]]]]011");
-        map.put("password","7036828527");
-        Response response= given().contentType("application/json").body(map)
+    public static String session="";
+    @Test(priority = 1)
+    public void authentication(){
+//        HashMap map=new HashMap();
+//        map.put("username","pravallikayeldurthi2010");
+//        map.put("password","7036828527");
+        Response response= given().contentType("application/json").body("{ \"username\": \"pravallikayeldurthi2010\", \"password\": \"7036828527\" }")
                                         .when().post("http://localhost:8080/rest/auth/1/session")
-                                        .then().statusCode(200).extract().response();
+                                        .then().extract().response();
         response.prettyPrint();
         JsonPath responseData=response.jsonPath();
         String sessionName=responseData.get("username");
         String sessionId=responseData.get("password");
         System.out.println(sessionId+"            "+sessionName);
-        return sessionName+"="+sessionId;
+        session= session+sessionName+"="+sessionId;
+        System.out.println(session);
+       // return "hh";
     }
+
 
 }

@@ -12,4 +12,9 @@ public class FlowerTest {
         System.out.println(chooseFlower.getCostOfFlower("rose"));
         System.out.println(chooseFlower.getCostOfFlower("lily"));
     }
+    @Test
+    public void g()
+    {
+
+    }
 }
